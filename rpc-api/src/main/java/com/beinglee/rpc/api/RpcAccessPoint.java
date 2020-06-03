@@ -1,7 +1,10 @@
 package com.beinglee.rpc.api;
 
+import com.beinglee.rpc.api.spi.ServiceSupport;
+
 import java.io.Closeable;
 import java.net.URI;
+import java.util.Collection;
 
 /**
  * @author zhanglu
@@ -45,7 +48,13 @@ public interface RpcAccessPoint extends Closeable {
      * @return 注册中心的引用
      */
     default NameService getNameService(URI nameServiceUri) {
+        Collection<NameService> nameServices = ServiceSupport.loadAll(NameService.class);
+        for (NameService nameService : nameServices) {
+            if (nameService.supportedSchemes().contains(nameServiceUri.getScheme())) {
+                nameService.connect(nameServiceUri);
+                return nameService;
+            }
+        }
         return null;
     }
-
 }
