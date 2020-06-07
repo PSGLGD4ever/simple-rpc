@@ -10,7 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Size of the map                       2 bytes
+ *      Map entry:
+ *          Key string:
+ *              Length:                  2 bytes
+ *              Serialized Key bytes     variable length
+ *          value list
+ *              list size               2 bytes
+ *              item(URI)
+ *                  Length              2 bytes
+ *                  Serialized uri      variable length
+ *              item(URI)
+ *              ...
+ *      Map entry:
+ *      ...
+ */
 public class MetadataSerializer implements Serializer<Metadata> {
 
     @Override
