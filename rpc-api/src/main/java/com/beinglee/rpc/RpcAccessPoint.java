@@ -1,6 +1,6 @@
-package com.beinglee.rpc.api;
+package com.beinglee.rpc;
 
-import com.beinglee.rpc.api.spi.ServiceSupport;
+import com.beinglee.rpc.spi.ServiceSupport;
 
 import java.io.Closeable;
 import java.net.URI;

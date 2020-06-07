@@ -1,4 +1,4 @@
-package com.beinglee.rpc.api.spi;
+package com.beinglee.rpc.spi;
 
 /**
  * @author zhanglu

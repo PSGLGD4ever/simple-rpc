@@ -1,4 +1,4 @@
-package com.beinglee.rpc.api.spi;
+package com.beinglee.rpc.spi;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,6 @@
-package com.beinglee.rpc.api.spi;
+package com.beinglee.rpc.spi;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,6 +13,7 @@ import java.util.stream.StreamSupport;
  * @author zhanglu
  * @date 2020/6/3 9:46
  */
+@Slf4j
 public class ServiceSupport {
 
     private final static Map<String, Object> singletonServices = new HashMap<>();

@@ -1,4 +1,4 @@
-package com.beinglee.rpc.api;
+package com.beinglee.rpc;
 
 import java.io.IOException;
 import java.net.URI;
