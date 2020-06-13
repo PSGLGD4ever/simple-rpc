@@ -10,5 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.being</groupId>
+            <artifactId>hello-server-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.being</groupId>
+            <artifactId>rpc-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
