@@ -1,7 +1,8 @@
 package com.beinglee.rpc.transport;
 
 import com.beinglee.rpc.transport.command.Command;
-import com.sun.xml.internal.ws.util.CompletedFuture;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author zhanglu
@@ -15,6 +16,6 @@ public interface Transport {
      * @param request 请求命令
      * @return 返回值是一个Future
      */
-    CompletedFuture<Command> send(Command request);
+    CompletableFuture<Command> send(Command request);
 
 }

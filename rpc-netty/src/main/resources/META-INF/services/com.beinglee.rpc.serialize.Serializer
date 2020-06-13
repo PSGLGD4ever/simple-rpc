@@ -1,4 +1,3 @@
-
 com.beinglee.rpc.serialize.impl.StringSerializer
 com.beinglee.rpc.serialize.impl.RpcRequestSerializer
 com.beinglee.rpc.serialize.impl.MetadataSerializer
