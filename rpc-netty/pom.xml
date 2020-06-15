@@ -17,6 +17,11 @@
             <artifactId>rpc-api</artifactId>
             <version>${parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.being</groupId>
+            <artifactId>hello-server-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

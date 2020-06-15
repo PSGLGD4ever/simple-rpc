@@ -24,7 +24,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
 
     private final String host;
     private final int port;
-    private TransportClient client;
+    private final TransportClient client;
     private TransportServer server = null;
     private final Map<URI, Transport> clientMap;
     private final StubFactory stubFactory;
@@ -49,7 +49,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
 
     private Transport createTransport(URI uri) {
         try {
-            return client.createTransport(new InetSocketAddress(host, port), 30_000L);
+            return client.createTransport(new InetSocketAddress(host, port), 3_000L);
         } catch (InterruptedException | TimeoutException e) {
             throw new RuntimeException(e);
         }
