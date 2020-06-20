@@ -22,7 +22,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class NettyRpcAccessPoint implements RpcAccessPoint {
 
-    private final String host;
     private final int port;
     private final TransportClient client;
     private TransportServer server = null;
@@ -32,7 +31,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
     private final ServiceProviderRegistry serviceProviderRegistry;
 
     public NettyRpcAccessPoint() {
-        this.host = "localhost";
+        String host = "localhost";
         this.port = 8080;
         this.uri = URI.create("rpc://" + host + ":" + port);
         this.client = ServiceSupport.load(TransportClient.class);
@@ -49,7 +48,7 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
 
     private Transport createTransport(URI uri) {
         try {
-            return client.createTransport(new InetSocketAddress(host, port), 3_000L);
+            return client.createTransport(new InetSocketAddress(uri.getHost(), uri.getPort()), 3_000L);
         } catch (InterruptedException | TimeoutException e) {
             throw new RuntimeException(e);
         }
@@ -81,4 +80,5 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
         }
         client.close();
     }
+
 }
