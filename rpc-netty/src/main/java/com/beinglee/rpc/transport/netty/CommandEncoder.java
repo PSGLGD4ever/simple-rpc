@@ -15,7 +15,7 @@ public abstract class CommandEncoder extends MessageToByteEncoder<Command> {
     @Override
     protected void encode(ChannelHandlerContext ctx, Command command, ByteBuf byteBuf) {
         // 数据总长度
-        byteBuf.writeInt(Integer.BYTES + command.getHeader().length() + command.getPayload().length);
+        byteBuf.writeInt(Command.LENGTH_FIELD_LENGTH + command.getHeader().length() + command.getPayload().length);
         encodeHeader(ctx, command.getHeader(), byteBuf);
         byteBuf.writeBytes(command.getPayload());
     }

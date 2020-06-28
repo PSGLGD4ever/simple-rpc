@@ -50,7 +50,8 @@ public class NettyServer implements TransportServer {
         return new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel channel) {
-                channel.pipeline().addLast(CommandCodecHandler.getInstance());
+                channel.pipeline().addLast(RequestDecoder.getInstance());
+                channel.pipeline().addLast(ResponseEncoder.getInstance());
                 channel.pipeline().addLast(new RequestInvocation(requestHandlerRegistry));
             }
         };
