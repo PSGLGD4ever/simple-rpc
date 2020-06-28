@@ -83,7 +83,7 @@ public class NettyClient implements TransportClient {
         return new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel channel) {
-                channel.pipeline().addLast(CommandCodecHandler.getInstance());
+                channel.pipeline().addLast(RequestEncoder.getInstance());
                 channel.pipeline().addLast(new ResponseInvocation(inFlightRequests));
             }
         };

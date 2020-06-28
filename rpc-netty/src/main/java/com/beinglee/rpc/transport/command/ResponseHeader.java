@@ -31,6 +31,10 @@ public class ResponseHeader extends Header {
                 (this.error == null ? 0 : error.getBytes(StandardCharsets.UTF_8).length);
     }
 
+    public int getErrorLength() {
+        return length() - super.length() - Integer.BYTES - Integer.BYTES;
+    }
+
     public int getCode() {
         return code;
     }
