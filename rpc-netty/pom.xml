@@ -22,6 +22,11 @@
             <artifactId>hello-server-api</artifactId>
             <version>${parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.itranswarp</groupId>
+            <artifactId>compiler</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>
