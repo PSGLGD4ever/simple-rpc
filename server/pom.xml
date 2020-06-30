@@ -22,6 +22,12 @@
             <artifactId>rpc-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.being</groupId>
+            <artifactId>rpc-netty</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
 
