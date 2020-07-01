@@ -33,9 +33,10 @@ public class NettyServer implements TransportServer {
         this.acceptEventGroup = newEventLoopGroup();
         this.ioEventGroup = newEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(acceptEventGroup, ioEventGroup)
+        serverBootstrap
+                .group(acceptEventGroup, ioEventGroup)
                 .channel(Epoll.isAvailable() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
-                .handler(newChannelHandlerPipeline());
+                .childHandler(newChannelHandlerPipeline());
         this.channel = doBind(serverBootstrap, port);
     }
 
@@ -50,9 +51,10 @@ public class NettyServer implements TransportServer {
         return new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel channel) {
-                channel.pipeline().addLast(RequestDecoder.getInstance());
-                channel.pipeline().addLast(ResponseEncoder.getInstance());
-                channel.pipeline().addLast(new RequestInvocation(requestHandlerRegistry));
+                channel.pipeline()
+                        .addLast(new RequestDecoder())
+                        .addLast(new ResponseEncoder())
+                        .addLast(new RequestInvocation(requestHandlerRegistry));
             }
         };
     }

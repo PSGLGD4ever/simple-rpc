@@ -3,7 +3,6 @@ package com.beinglee.rpc.transport.netty;
 import com.beinglee.rpc.transport.command.Header;
 import com.beinglee.rpc.transport.command.ResponseHeader;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.nio.charset.StandardCharsets;
@@ -12,12 +11,11 @@ import java.nio.charset.StandardCharsets;
  * @author zhanglu
  * @date 2020/6/28 10:26
  */
-@ChannelHandler.Sharable
 public class ResponseEncoder extends CommandEncoder {
 
     private static ResponseEncoder instance = null;
 
-    private ResponseEncoder() {
+    public ResponseEncoder() {
     }
 
     public static ResponseEncoder getInstance() {

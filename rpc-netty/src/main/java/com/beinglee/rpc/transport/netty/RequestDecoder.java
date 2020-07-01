@@ -2,7 +2,6 @@ package com.beinglee.rpc.transport.netty;
 
 import com.beinglee.rpc.transport.command.Header;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.List;
@@ -11,11 +10,10 @@ import java.util.List;
  * @author zhanglu
  * @date 2020/6/28 9:49
  */
-@ChannelHandler.Sharable
 public class RequestDecoder extends CommandDecoder {
     private static RequestDecoder instance = null;
 
-    private RequestDecoder() {
+    public RequestDecoder() {
     }
 
     public static RequestDecoder getInstance() {

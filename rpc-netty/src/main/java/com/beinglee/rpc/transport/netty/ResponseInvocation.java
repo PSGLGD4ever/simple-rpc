@@ -3,7 +3,6 @@ package com.beinglee.rpc.transport.netty;
 import com.beinglee.rpc.transport.InFlightRequests;
 import com.beinglee.rpc.transport.ResponseFuture;
 import com.beinglee.rpc.transport.command.Command;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2020/6/20 15:08
  */
 @Slf4j
-@ChannelHandler.Sharable
 public class ResponseInvocation extends SimpleChannelInboundHandler<Command> {
 
     private final InFlightRequests inFlightRequests;

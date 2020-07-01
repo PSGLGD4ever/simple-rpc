@@ -20,13 +20,15 @@ public class Server {
     public static void main(String[] args) throws Exception {
         String serviceName = HelloService.class.getCanonicalName();
         File temDirFile = new File(System.getProperty("java.io.tmpdir"));
-        File file = new File(temDirFile, "simple_rpc_name_service.data");
+        File file = new File(temDirFile, "beinglee_simple_rpc_name_service.data");
         HelloService helloService = new HelloServiceImpl();
         try (RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
             Closeable ignored = rpcAccessPoint.startServer();
             NameService nameService = rpcAccessPoint.getNameService(file.toURI());
             URI uri = rpcAccessPoint.addServiceProvider(helloService, HelloService.class);
             nameService.registerService(serviceName, uri);
+            int ignore = System.in.read();
+            System.out.println("Bye");
         }
     }
 
