@@ -1,12 +1,15 @@
 package com.beinglee.rpc.serialize.impl;
 
 import com.beinglee.rpc.serialize.Serializer;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.charset.StandardCharsets;
 
-@Slf4j
+
 public class StringSerializer implements Serializer<String> {
+
+    private static final Logger log = LoggerFactory.getLogger(StringSerializer.class);
 
     @Override
     public int size(String entry) {

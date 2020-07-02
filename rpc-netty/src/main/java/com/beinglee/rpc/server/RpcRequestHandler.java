@@ -9,7 +9,8 @@ import com.beinglee.rpc.transport.command.Code;
 import com.beinglee.rpc.transport.command.Command;
 import com.beinglee.rpc.transport.command.Header;
 import com.beinglee.rpc.transport.command.ResponseHeader;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -19,9 +20,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author zhanglu
  * @date 2020/6/28 16:44
  */
-@Slf4j
+
 @Singleton
 public class RpcRequestHandler implements RequestHandler, ServiceProviderRegistry {
+
+    private static final Logger log = LoggerFactory.getLogger(RpcRequestHandler.class);
 
     private Map<String, Object> serviceProviders = new ConcurrentHashMap<>();
 

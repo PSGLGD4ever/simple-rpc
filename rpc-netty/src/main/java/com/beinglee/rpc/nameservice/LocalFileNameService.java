@@ -2,7 +2,8 @@ package com.beinglee.rpc.nameservice;
 
 import com.beinglee.rpc.NameService;
 import com.beinglee.rpc.serialize.SerializeSupport;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,8 +22,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author zhanglu
  * @date 2020/6/29 9:46
  */
-@Slf4j
+
 public class LocalFileNameService implements NameService {
+
+    private static final Logger log = LoggerFactory.getLogger(LocalFileNameService.class);
 
     private File file = null;
 

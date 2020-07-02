@@ -1,7 +1,8 @@
 package com.beinglee.rpc.transport;
 
 import com.beinglee.rpc.spi.ServiceSupport;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,8 +12,10 @@ import java.util.Map;
  * @author zhanglu
  * @date 2020/6/13 17:51
  */
-@Slf4j
+
 public class RequestHandlerRegistry {
+
+    private static final Logger log = LoggerFactory.getLogger(RequestHandlerRegistry.class);
 
     private static RequestHandlerRegistry instance = null;
 

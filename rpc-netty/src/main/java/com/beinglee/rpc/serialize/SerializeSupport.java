@@ -1,14 +1,17 @@
 package com.beinglee.rpc.serialize;
 
 import com.beinglee.rpc.spi.ServiceSupport;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
+
 public class SerializeSupport {
+
+    private static final Logger log = LoggerFactory.getLogger(SerializeSupport.class);
 
     /**
      * 对象序列化的时候，我们得知道当前对象用哪种序列化方式。

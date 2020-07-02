@@ -7,15 +7,18 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author zhanglu
  * @date 2020/6/20 17:14
  */
-@Slf4j
+
 @ChannelHandler.Sharable
 public class RequestInvocation extends SimpleChannelInboundHandler<Command> {
+
+    private static final Logger log = LoggerFactory.getLogger(RequestInvocation.class);
 
     private RequestHandlerRegistry requestHandlerRegistry;
 

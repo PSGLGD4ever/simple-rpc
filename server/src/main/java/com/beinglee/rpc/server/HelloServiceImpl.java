@@ -1,14 +1,18 @@
 package com.beinglee.rpc.server;
 
 import com.beinglee.hello.HelloService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * @author zhanglu
  * @date 2020/6/13 14:57
  */
-@Slf4j
+
 public class HelloServiceImpl implements HelloService {
+
+    private static final Logger log = LoggerFactory.getLogger(HelloServiceImpl.class);
 
     @Override
     public String hello(String name) {
