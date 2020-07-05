@@ -1,0 +1,1 @@
+select uri from rpc_name_service where service_name = ?

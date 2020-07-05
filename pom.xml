@@ -14,6 +14,7 @@
         <module>rpc-api</module>
         <module>rpc-netty</module>
         <module>hello-service-api</module>
+        <module>jdbc-nameservice</module>
     </modules>
     <name>simple-rpc</name>
     <description>基于Netty实现的一个简单的RPC框架</description>

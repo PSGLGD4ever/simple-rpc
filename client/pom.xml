@@ -27,6 +27,11 @@
             <version>${project.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>com.being</groupId>
+            <artifactId>jdbc-nameservice</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
