@@ -1,5 +1,6 @@
 package com.beinglee.rpc.serialize;
 
+import com.beinglee.rpc.serialize.impl.ObjectSerializer;
 import com.beinglee.rpc.spi.ServiceSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class SerializeSupport {
 
     public static <T> byte[] serialize(T entry) {
         @SuppressWarnings("unchecked")
-        Serializer<T> serializer = (Serializer<T>) serializerMap.get(entry.getClass());
+        Serializer<T> serializer = (Serializer<T>) serializerMap.getOrDefault(entry.getClass(), new ObjectSerializer());
         if (serializer == null) {
             throw new SerializeException();
         }
@@ -70,7 +71,7 @@ public class SerializeSupport {
     private static <E> E parse(byte[] bytes, int offset, int length, Class eClass) {
         Serializer<?> serializer = serializerMap.getOrDefault(eClass, serializerMap.get(Object.class));
         Object entry = serializer.parse(bytes, offset, length);
-        if (entry.getClass().isAssignableFrom(eClass)) {
+        if (entry.getClass().isAssignableFrom(eClass) || eClass.isAssignableFrom(Object.class)) {
             return (E) entry;
         } else {
             throw new SerializeException();

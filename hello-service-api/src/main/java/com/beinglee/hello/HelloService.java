@@ -7,4 +7,6 @@ package com.beinglee.hello;
 public interface HelloService {
 
     String hello(String name);
+
+    int getAge();
 }

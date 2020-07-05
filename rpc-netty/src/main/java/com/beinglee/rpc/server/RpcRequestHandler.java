@@ -41,7 +41,7 @@ public class RpcRequestHandler implements RequestHandler, ServiceProviderRegistr
                     paramTypes[i] = args[i].getClass();
                 }
                 Method method = serviceProvider.getClass().getMethod(rpcRequest.getMethodName(), paramTypes);
-                String result = (String) method.invoke(serviceProvider, args);
+                Object result = method.invoke(serviceProvider, args);
                 Header responseHeader = new ResponseHeader(type(), header.getVersion(), header.getRequestId());
                 return new Command(responseHeader, SerializeSupport.serialize(result));
             }

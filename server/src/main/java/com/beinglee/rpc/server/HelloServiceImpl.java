@@ -21,4 +21,9 @@ public class HelloServiceImpl implements HelloService {
         log.info("HelloServiceImpl返回:{}", ret);
         return ret;
     }
+
+    @Override
+    public int getAge() {
+        return 18;
+    }
 }

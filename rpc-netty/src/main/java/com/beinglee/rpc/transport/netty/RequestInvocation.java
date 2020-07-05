@@ -10,6 +10,9 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 /**
  * @author zhanglu
  * @date 2020/6/20 17:14
@@ -20,6 +23,8 @@ public class RequestInvocation extends SimpleChannelInboundHandler<Command> {
 
     private static final Logger log = LoggerFactory.getLogger(RequestInvocation.class);
 
+    private final Executor worker = Executors.newSingleThreadExecutor();
+
     private RequestHandlerRegistry requestHandlerRegistry;
 
     public RequestInvocation(RequestHandlerRegistry requestHandlerRegistry) {
@@ -29,7 +34,10 @@ public class RequestInvocation extends SimpleChannelInboundHandler<Command> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Command command) throws Exception {
         RequestHandler handler = requestHandlerRegistry.get(command.getHeader().getType());
-        if (handler != null) {
+        if (handler == null) {
+            throw new Exception(String.format("No handler for request with type: %d!", command.getHeader().getType()));
+        }
+        worker.execute(() -> {
             Command response = handler.handle(command);
             if (response != null) {
                 ctx.channel().writeAndFlush(response).addListener((ChannelFutureListener) future -> {
@@ -40,9 +48,7 @@ public class RequestInvocation extends SimpleChannelInboundHandler<Command> {
             } else {
                 log.warn("response is null");
             }
-        } else {
-            throw new Exception(String.format("No handler for request with type: %d!", command.getHeader().getType()));
-        }
+        });
     }
 
     @Override

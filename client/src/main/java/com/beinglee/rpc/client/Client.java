@@ -30,6 +30,8 @@ public class Client {
             HelloService helloService = rpcAccessPoint.getRemoteService(uri, HelloService.class);
             String ret = helloService.hello(name);
             log.info("收到服务端响应------>" + ret);
+            int age = helloService.getAge();
+            log.info("收到服务端响应------>" + age);
         }
     }
 }
