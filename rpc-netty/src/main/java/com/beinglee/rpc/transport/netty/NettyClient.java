@@ -28,7 +28,7 @@ public class NettyClient implements TransportClient {
 
     private Bootstrap bootstrap;
 
-    private List<Channel> channels;
+    private final List<Channel> channels;
 
     public NettyClient() {
         this.inFlightRequests = new InFlightRequests();

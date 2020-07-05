@@ -68,10 +68,7 @@ public class SerializeSupport {
 
     @SuppressWarnings("unchecked")
     private static <E> E parse(byte[] bytes, int offset, int length, Class eClass) {
-        Serializer<?> serializer = serializerMap.get(eClass);
-        if (serializer == null) {
-            throw new SerializeException();
-        }
+        Serializer<?> serializer = serializerMap.getOrDefault(eClass, serializerMap.get(Object.class));
         Object entry = serializer.parse(bytes, offset, length);
         if (entry.getClass().isAssignableFrom(eClass)) {
             return (E) entry;

@@ -29,7 +29,7 @@ public class Client {
             URI uri = nameService.lookupService(serviceName);
             HelloService helloService = rpcAccessPoint.getRemoteService(uri, HelloService.class);
             String ret = helloService.hello(name);
-            log.info(ret);
+            log.info("收到服务端响应------>" + ret);
         }
     }
 }

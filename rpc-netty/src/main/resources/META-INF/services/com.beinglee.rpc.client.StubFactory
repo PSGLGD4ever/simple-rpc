@@ -1,1 +1,2 @@
-com.beinglee.rpc.client.DynamicStubFactory
+#com.beinglee.rpc.client.DynamicStubFactory
+com.beinglee.rpc.client.CGLIBStubFactory

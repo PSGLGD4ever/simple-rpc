@@ -1,3 +1,5 @@
 com.beinglee.rpc.serialize.impl.StringSerializer
 com.beinglee.rpc.serialize.impl.RpcRequestSerializer
 com.beinglee.rpc.serialize.impl.MetadataSerializer
+com.beinglee.rpc.serialize.impl.ObjectSerializer
+com.beinglee.rpc.serialize.impl.ObjArraysSerializer
